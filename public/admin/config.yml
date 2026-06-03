@@ -1,0 +1,21 @@
+backend:
+  name: github
+  repo: YOUR_GITHUB_USERNAME/Real-News-QA
+  branch: main
+
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "articles"
+    label: "Articles (समाचार लेख)"
+    folder: "src/content/articles"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title (शीर्षक)", name: "title", widget: "string" }
+      - { label: "Publish Date (प्रकाशन तिथि)", name: "date", widget: "datetime" }
+      - { label: "Topic (विषय)", name: "topic", widget: "select", options: ["Latest", "Chunav", "Rajneeti", "Khel", "Mausam", "Desh", "Manoranjan", "Business", "Technology", "Sehat", "Antarrashtriya"] }
+      - { label: "Featured Image (मुख्य चित्र)", name: "thumbnail", widget: "image" }
+      - { label: "Additional Images (अन्य चित्र)", name: "gallery", widget: "list", field: { label: "Image", name: "image", widget: "image" }, required: false }
+      - { label: "Body Content (मुख्य समाचार)", name: "body", widget: "markdown" }
